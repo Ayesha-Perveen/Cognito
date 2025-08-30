@@ -52,9 +52,9 @@ const startscreen=document.querySelector("#start-screen");
 const quizcontainer=document.querySelector("#quiz-container");
 const nextButton = document.getElementById('next-button');
 const endscreen=document.querySelector("#end-screen");
-const endMessage = document.getElementById('end-message');
+const endtext = document.getElementById('end-text');
 const finalScoreDisplay = document.getElementById('final-score');
-const previousscore = document.getElementById('previous-score');
+const previousscore = document.getElementById('Previous-score');
 const restartButton = document.getElementById('restart-button');
 //starting the quiz
 let score=0;
@@ -246,13 +246,27 @@ function clearall()
     answersdiv.innerHTML="";
     selectedAnswer=null;
 }
-const existingScores = JSON.parse(localStorage.getItem('quizScores')) || [];
+
 function pushResults() {
+    const existingScores = JSON.parse(localStorage.getItem('quizScores')) || [];
   existingScores.push(score);
   localStorage.setItem('quizScores', JSON.stringify(existingScores));
 }
 function endmsd()
 {
+    endscreen.classList.remove("hidden");
+    endscreen.classList.add("flex");
+    finalScoreDisplay.textContent=`Your final score is: ${score} out of ${htmlQuestions.length}`;
+    if (score === htmlQuestions.length) {
+        endtext.textContent = "Congratulations! You got a perfect score!";
+    } else if (score >= htmlQuestions.length / 2) {
+        endtext.textContent = "Great job! You passed the quiz!";
+    } else {
+        endtext.textContent = "You can do better! Try again.";
+    }
+    const allScores = JSON.parse(localStorage.getItem('quizScores')) || [];
+    const highScore = Math.max(...allScores)||0;   
+    previousscore.textContent = `Previous High Score: ${highScore}`;
 
 }
 nextButton.addEventListener("click", function() {
@@ -265,9 +279,16 @@ nextButton.addEventListener("click", function() {
         start_mainController(curind);
     } else {
         nextButton.classList.add("hidden");
-        // Save the score and then show the end screen
-        quizcontainer.classList.toggle("hidden");
-        puResults();
+        quizcontainer.classList.add("hidden");
+        pushResults();
         endmsd();
     }
+});
+restartButton.addEventListener("click",function(){
+    endscreen.classList.add('hidden');
+    startscreen.classList.remove('hidden');
+
+    score = 0;
+    curind = 0;
+    selectedAnswer = null;
 });

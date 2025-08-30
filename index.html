@@ -33,8 +33,8 @@
             </button>
         </div>
     </header>
-    <div id="main-container" class="w-full h-[75%] md:w-[50%] md:h-[70%] bg-gray-200 dark:bg-gray-400 rounded-2xl shadow-lg bg-opacity-2 mx-16">
-        <div id="start-screen" class="text-center font-semibold flex flex-col justify-center items-center">
+    <div id="main-container" class="w-full md:w-[50%] bg-gray-200 dark:bg-gray-400 rounded-2xl shadow-lg bg-opacity-2 mx-16">
+        <div id="start-screen" class="text-center font-semibold flex flex-col justify-center items-center m-4">
             <h1 class="text-4xl m-4">Welcome to the Quiz!</h1>
             <button id="start-button" class="p-3 bg-blue-600 text-white font-bold rounded-full w-[30%] shadow-md hover:bg-indigo-700 transition-colors duration-300" >Start Quiz</button>
         </div>
@@ -46,13 +46,13 @@
             <hr class="border-t-2 border-gray-600 my-4">
             <div id="answers-div"></div>
             <hr class="border-t-2 border-gray-600 my-4">
-            <div id="btns-div " class="m-3 flex flex-row-reverse">
+            <div id="btns-div" class="m-3 flex flex-row-reverse">
                 <button id="next-button" class="p-2 bg-blue-500 text-white rounded-3xl hover:bg-indigo-800 hidden">Next Question</button>
             </div>
             <div id="feedback-div" class="rounded-3xl m-4 p-3  text-center font-bold text-2xl">
             </div>
         </div>
-        <div id="end-screen" class="hidden text-center font-semibold flex flex-col items-center justify-center p-8 bg-white shadow-lg rounded-2xl max-w-sm mx-auto my-12">
+        <div id="end-screen" class="hidden text-center font-semibold z-50 pb-20 flex-col items-center justify-center p-8 bg-white shadow-lg rounded-2xl max-w-sm mx-auto my-12">
             <h2 id="end-message" class="text-3xl font-bold text-gray-800 mb-4">Quiz Finished!</h2>
             <p id="final-score" class="text-2xl text-blue-600 mb-2"></p>
             <p id="end-text" class="text-lg text-gray-600 mb-4"> </p>
